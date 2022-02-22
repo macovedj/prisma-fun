@@ -1,0 +1,27 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model assortment {
+  id String @id @default(uuid())
+  products product[]
+}
+
+model product {
+  id String @id @default(uuid())
+  assortments assortment[]
+}
+
+model DataType {
+  id String @id @default(uuid())
+  name String
+  age Int
+}
